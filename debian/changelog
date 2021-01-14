@@ -1,0 +1,14 @@
+ros-dashing-rc-reason-clients (0.2.0-1bionic) bionic; urgency=high
+
+  * Added new error values to hand-eye calibration service call
+  * remove builtool_depend on non-existing ament_python
+
+ -- ruess <felix.ruess@roboception.de>  Wed, 13 Jan 2021 23:00:00 -0000
+
+ros-dashing-rc-reason-clients (0.1.0-1bionic) bionic; urgency=high
+
+  * initial release
+
+ -- ruess <felix.ruess@roboception.de>  Tue, 02 Jun 2020 22:00:00 -0000
+
+
