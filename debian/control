@@ -1,0 +1,12 @@
+Source: ros-dashing-rc-reason-clients
+Section: misc
+Priority: optional
+Maintainer: ruess <felix.ruess@roboception.de>
+Build-Depends: debhelper (>= 9.0.0), python3-pytest, python3-requests, ros-dashing-ament-copyright, ros-dashing-ament-flake8, ros-dashing-ament-pep257, ros-dashing-geometry-msgs, ros-dashing-rc-reason-msgs, ros-dashing-rclpy, ros-dashing-ros2pkg, ros-dashing-tf2-msgs, ros-dashing-visualization-msgs, ros-dashing-ros-workspace, python3-all, python3-setuptools
+Homepage: 
+Standards-Version: 3.9.2
+
+Package: ros-dashing-rc-reason-clients
+Architecture: any
+Depends: ${python3:Depends}, ${misc:Depends}, python3-requests, ros-dashing-geometry-msgs, ros-dashing-rc-reason-msgs, ros-dashing-rclpy, ros-dashing-ros2pkg, ros-dashing-tf2-msgs, ros-dashing-visualization-msgs, ros-dashing-ros-workspace
+Description: Clients for interfacing with Roboception reason modules on rc_visard and rc_cube.
