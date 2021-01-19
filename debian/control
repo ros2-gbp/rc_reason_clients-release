@@ -1,0 +1,12 @@
+Source: ros-foxy-rc-reason-msgs
+Section: misc
+Priority: optional
+Maintainer: Felix Ruess <felix.ruess@roboception.de>
+Build-Depends: debhelper (>= 9.0.0), ros-foxy-ament-cmake, ros-foxy-ament-lint-common, ros-foxy-geometry-msgs, ros-foxy-rc-common-msgs, ros-foxy-rosidl-default-generators, ros-foxy-shape-msgs, ros-foxy-std-msgs, ros-foxy-ros-workspace, ros-foxy-rosidl-typesupport-connext-c, ros-foxy-rosidl-typesupport-connext-cpp, ros-foxy-rosidl-typesupport-fastrtps-c, ros-foxy-rosidl-typesupport-fastrtps-cpp
+Homepage: 
+Standards-Version: 3.9.2
+
+Package: ros-foxy-rc-reason-msgs
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, ros-foxy-geometry-msgs, ros-foxy-rc-common-msgs, ros-foxy-rosidl-default-runtime, ros-foxy-shape-msgs, ros-foxy-std-msgs, ros-foxy-ros-workspace
+Description: Msg and srv definitions for rc_reason_clients
