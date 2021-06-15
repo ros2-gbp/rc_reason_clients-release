@@ -1,0 +1,12 @@
+Source: ros-rolling-rc-reason-clients
+Section: misc
+Priority: optional
+Maintainer: ruess <felix.ruess@roboception.de>
+Build-Depends: debhelper (>= 9.0.0), python3-pytest, python3-requests, ros-rolling-ament-copyright, ros-rolling-ament-flake8, ros-rolling-ament-pep257, ros-rolling-geometry-msgs, ros-rolling-rc-reason-msgs, ros-rolling-rclpy, ros-rolling-ros2pkg, ros-rolling-tf2-msgs, ros-rolling-visualization-msgs, ros-rolling-ros-workspace, python3-all, python3-setuptools
+Homepage: 
+Standards-Version: 3.9.2
+
+Package: ros-rolling-rc-reason-clients
+Architecture: any
+Depends: ${python3:Depends}, ${misc:Depends}, python3-requests, ros-rolling-geometry-msgs, ros-rolling-rc-reason-msgs, ros-rolling-rclpy, ros-rolling-ros2pkg, ros-rolling-tf2-msgs, ros-rolling-visualization-msgs, ros-rolling-ros-workspace
+Description: Clients for interfacing with Roboception reason modules on rc_visard and rc_cube.
