@@ -40,15 +40,17 @@ def map_ros2api(msg, rostype):
             new_msg['stereo'] = {'plane_preference': msg['stereo_plane_preference']}
             del new_msg['stereo_plane_preference']
         return new_msg
-    elif rostype == 'rc_reason_msgs/LoadCarrier':
-        # never send overfilled flag
-        new_msg = {k: v for k, v in msg.items() if k not in ['pose', 'overfilled']}
+    elif rostype == 'rc_reason_msgs/LoadCarrierModel':
+        new_msg = copy.deepcopy(msg)
         # map PoseStamped to pose and pose_frame
         new_msg['pose'] = msg['pose']['pose']
         new_msg['pose_frame'] = msg['pose']['header']['frame_id']
         return new_msg
-    elif rostype in ['rc_reason_msgs/DetectLoadCarriers_Request', 'rc_reason_msgs/DetectFillingLevel_Request',
-                     'rc_reason_msgs/DetectTags_Request']:
+    elif rostype in ['rc_reason_msgs/DetectLoadCarriers_Request',
+                     'rc_reason_msgs/DetectFillingLevel_Request',
+                     'rc_reason_msgs/DetectTags_Request',
+                     'rc_reason_msgs/SilhouetteMatchDetectObject_Request',
+                     'rc_reason_msgs/CadMatchDetectObject_Request']:
         new_msg = copy.deepcopy(msg)
         # don't send robot pose if not external
         if msg['pose_frame'] != 'external':
@@ -92,7 +94,7 @@ def map_ros2api(msg, rostype):
         return new_msg
     elif rostype in ['rc_reason_msgs/SetLoadCarrier_Request']:
         new_msg = copy.deepcopy(msg)
-        # don't send pose (as prior) if frame_id is not set
+        # don't send pose (as prior) if pose_frame is not set
         if not msg['load_carrier']['pose_frame']:
             del new_msg['load_carrier']['pose']
         return new_msg
@@ -133,12 +135,16 @@ def map_api2ros(msg, rostype):
         new_msg['pose_frame'] = msg['plane']['pose_frame']
         del new_msg['plane']['pose_frame']
         return new_msg
-    elif rostype in ['rc_reason_msgs/LoadCarrier']:
+    elif rostype in ['rc_reason_msgs/LoadCarrier',
+                     'rc_reason_msgs/LoadCarrierModel'
+                     ]:
         return _to_ros_pose_stamped(msg)
     elif rostype in ['rc_reason_msgs/ComputeGrasps_Response',
                      'rc_reason_msgs/DetectFillingLevel_Response',
                      'rc_reason_msgs/DetectLoadCarriers_Response',
-                     'rc_reason_msgs/DetectItems_Response']:
+                     'rc_reason_msgs/DetectItems_Response',
+                     'rc_reason_msgs/CadMatchDetectObject_Response'
+                     ]:
         new_msg = {k: v for k, v in msg.items() if k not in ['load_carriers']}
         new_msg['load_carriers'] = []
         for lc in msg['load_carriers']:
@@ -159,6 +165,35 @@ def map_api2ros(msg, rostype):
             new_msg['primitive'] = {'type': 1, 'dimensions': [msg['box']['x'], msg['box']['y'], msg['box']['z']]}
         elif msg['type'] == 'SPHERE':
             new_msg['primitive'] = {'type': 2, 'dimensions': [msg['sphere']['radius']]}
+        return new_msg
+    elif rostype == 'rc_reason_msgs/SilhouetteMatchDetectObject_Response':
+        new_msg = {'timestamp': msg['timestamp']}
+        new_msg['matches'] = msg['instances']
+        new_msg['grasps'] = msg.get('grasps', [])
+        new_msg['load_carriers'] = []
+        for lc in msg['load_carriers']:
+            new_msg['load_carriers'].append(_to_ros_pose_stamped(lc, msg['timestamp']))
+        return new_msg
+    elif rostype == 'rc_reason_msgs/Match':
+        new_msg = _to_ros_pose_stamped(msg)
+        # rename silhouettematch API fields to common ROS Match fields
+        if 'object_id' in new_msg:
+            new_msg['template_id'] = new_msg['object_id']
+            del new_msg['object_id']
+        if 'id' in new_msg:
+            if 'uuid' not in new_msg:
+                new_msg['uuid'] = msg['id']
+            del new_msg['id']
+        # if score is not available, set to -1
+        if 'score' not in new_msg:
+            new_msg['score'] = -1.0
+        return new_msg
+    elif rostype == 'rc_reason_msgs/Grasp':
+        new_msg = _to_ros_pose_stamped(msg)
+        # rename silhouettematch API fields to common ROS Grasp fields
+        if 'instance_uuid' in new_msg:
+            new_msg['match_uuid'] = msg['instance_uuid']
+            del new_msg['instance_uuid']
         return new_msg
 
     # no mapping required, return auto-generated one
