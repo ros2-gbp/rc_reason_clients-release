@@ -1,0 +1,12 @@
+Source: ros-galactic-rc-reason-clients
+Section: misc
+Priority: optional
+Maintainer: ruess <felix.ruess@roboception.de>
+Build-Depends: debhelper (>= 9.0.0), python3-pytest, python3-requests, ros-galactic-ament-copyright, ros-galactic-ament-flake8, ros-galactic-ament-pep257, ros-galactic-geometry-msgs, ros-galactic-rc-reason-msgs, ros-galactic-rclpy, ros-galactic-ros2pkg, ros-galactic-tf2-msgs, ros-galactic-visualization-msgs, ros-galactic-ros-workspace, python3-all, python3-setuptools
+Homepage: 
+Standards-Version: 3.9.2
+
+Package: ros-galactic-rc-reason-clients
+Architecture: any
+Depends: ${python3:Depends}, ${misc:Depends}, python3-requests, ros-galactic-geometry-msgs, ros-galactic-rc-reason-msgs, ros-galactic-rclpy, ros-galactic-ros2pkg, ros-galactic-tf2-msgs, ros-galactic-visualization-msgs, ros-galactic-ros-workspace
+Description: Clients for interfacing with Roboception reason modules on rc_visard and rc_cube.
