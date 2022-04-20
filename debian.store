@@ -1,1 +1,1 @@
-{"base": "42cab76", "parent": "debian/rolling/rc_reason_msgs", "previous": "d06d932", "trim": "", "trimbase": ""}
+{"base": "6061c87", "parent": "debian/humble/rc_reason_msgs", "previous": "73b273a", "trim": "", "trimbase": ""}
