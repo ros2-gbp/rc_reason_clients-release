@@ -1,0 +1,20 @@
+ros-iron-rc-reason-clients (0.2.1-5jammy) jammy; urgency=high
+
+  * cmake: detect if it is shallow clone on buildfarm and use version from package.xml
+
+ -- ruess <felix.ruess@roboception.de>  Fri, 15 Jan 2021 16:00:00 -0000
+
+ros-iron-rc-reason-clients (0.2.0-5jammy) jammy; urgency=high
+
+  * Added new error values to hand-eye calibration service call
+  * remove builtool_depend on non-existing ament_python
+
+ -- ruess <felix.ruess@roboception.de>  Wed, 13 Jan 2021 16:00:00 -0000
+
+ros-iron-rc-reason-clients (0.1.0-5jammy) jammy; urgency=high
+
+  * initial release
+
+ -- ruess <felix.ruess@roboception.de>  Tue, 02 Jun 2020 16:00:00 -0000
+
+
