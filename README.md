@@ -1,5 +1,30 @@
 ## rc_reason_clients (rolling) - 0.3.0-1
 
+The packages in the `rc_reason_clients` repository were released into the `rolling` distro by running `/usr/bin/bloom-release rc_reason_clients --rosdistro rolling -e` on `Mon, 05 Jun 2023 15:01:20 -0000`
+
+These packages were released:
+- `rc_reason_clients`
+- `rc_reason_msgs`
+
+Version of package(s) in repository `rc_reason_clients`:
+
+- upstream repository: https://github.com/roboception/rc_reason_clients_ros2.git
+- release repository: https://github.com/ros2-gbp/rc_reason_clients-release.git
+- rosdistro version: `0.2.1-4`
+- old version: `0.2.1-4`
+- new version: `0.3.0-1`
+
+Versions of tools used:
+
+- bloom version: `0.11.2`
+- catkin_pkg version: `0.5.2`
+- rosdep version: `0.22.2`
+- rosdistro version: `0.9.0`
+- vcstools version: `0.1.42`
+
+
+## rc_reason_clients (rolling) - 0.3.0-1
+
 The packages in the `rc_reason_clients` repository were released into the `rolling` distro by running `/usr/bin/bloom-release --ros-distro rolling rc_reason_clients` on `Tue, 08 Feb 2022 13:35:31 -0000`
 
 These packages were released:
