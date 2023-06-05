@@ -128,7 +128,7 @@ tracks:
     name: upstream
     patches: null
     release_inc: '5'
-    release_repo_url: null
+    release_repo_url: git@github.com:ros2-gbp/rc_reason_clients-release.git
     release_tag: '"v:{version}"'
     ros_distro: iron
     vcs_type: git
