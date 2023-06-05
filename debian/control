@@ -1,0 +1,12 @@
+Source: ros-iron-rc-reason-clients
+Section: misc
+Priority: optional
+Maintainer: ruess <felix.ruess@roboception.de>
+Build-Depends: debhelper (>= 9.0.0), python3-pytest <!nocheck>, python3-requests, ros-iron-ament-copyright <!nocheck>, ros-iron-ament-flake8 <!nocheck>, ros-iron-ament-pep257 <!nocheck>, ros-iron-geometry-msgs, ros-iron-rc-reason-msgs, ros-iron-rclpy, ros-iron-ros2pkg, ros-iron-tf2-msgs, ros-iron-visualization-msgs, ros-iron-ros-workspace, python3-all, python3-setuptools, dh-python
+Homepage: 
+Standards-Version: 3.9.2
+
+Package: ros-iron-rc-reason-clients
+Architecture: any
+Depends: ${python3:Depends}, ${misc:Depends}, python3-requests, ros-iron-geometry-msgs, ros-iron-rc-reason-msgs, ros-iron-rclpy, ros-iron-ros2pkg, ros-iron-tf2-msgs, ros-iron-visualization-msgs, ros-iron-ros-workspace
+Description: Clients for interfacing with Roboception reason modules on rc_visard and rc_cube.
