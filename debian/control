@@ -1,0 +1,12 @@
+Source: ros-jazzy-rc-reason-msgs
+Section: misc
+Priority: optional
+Maintainer: Felix Ruess <felix.ruess@roboception.de>
+Build-Depends: debhelper (>= 9.0.0), ament-cmake, ament-cmake-copyright <!nocheck>, ament-cmake-cppcheck <!nocheck>, ament-cmake-cpplint <!nocheck>, ament-cmake-flake8 <!nocheck>, ament-cmake-lint-cmake <!nocheck>, ament-cmake-pep257 <!nocheck>, ament-cmake-uncrustify <!nocheck>, ament-cmake-xmllint <!nocheck>, libgeometry-msgs-dev, libshape-msgs-dev, libstd-msgs-dev, python3-geometry-msgs, python3-shape-msgs, python3-std-msgs, ros-geometry-msgs, ros-jazzy-rc-common-msgs, ros-jazzy-rosidl-default-generators, ros-shape-msgs, ros-std-msgs, ros-jazzy-ros-workspace, ros-jazzy-rosidl-typesupport-fastrtps-c, ros-jazzy-rosidl-typesupport-fastrtps-cpp
+Homepage: 
+Standards-Version: 3.9.2
+
+Package: ros-jazzy-rc-reason-msgs
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, libgeometry-msgs-dev, libshape-msgs-dev, libstd-msgs-dev, python3-geometry-msgs, python3-shape-msgs, python3-std-msgs, ros-geometry-msgs, ros-jazzy-rc-common-msgs, ros-jazzy-rosidl-default-runtime, ros-shape-msgs, ros-std-msgs, ros-jazzy-ros-workspace
+Description: Msg and srv definitions for rc_reason_clients
