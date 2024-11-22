@@ -1,0 +1,12 @@
+Source: ros-jazzy-rc-reason-msgs
+Section: misc
+Priority: optional
+Maintainer: Felix Ruess <felix.ruess@roboception.de>
+Build-Depends: debhelper (>= 9.0.0), ros-jazzy-ament-cmake, ros-jazzy-ament-lint-common <!nocheck>, ros-jazzy-geometry-msgs, ros-jazzy-rc-common-msgs, ros-jazzy-rosidl-default-generators, ros-jazzy-shape-msgs, ros-jazzy-std-msgs, ros-jazzy-ros-workspace, ros-jazzy-rosidl-typesupport-fastrtps-c, ros-jazzy-rosidl-typesupport-fastrtps-cpp
+Homepage: 
+Standards-Version: 3.9.2
+
+Package: ros-jazzy-rc-reason-msgs
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, ros-jazzy-geometry-msgs, ros-jazzy-rc-common-msgs, ros-jazzy-rosidl-default-runtime, ros-jazzy-shape-msgs, ros-jazzy-std-msgs, ros-jazzy-ros-workspace
+Description: Msg and srv definitions for rc_reason_clients
