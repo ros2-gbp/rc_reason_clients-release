@@ -1,0 +1,41 @@
+ros-kilted-rc-reason-clients (0.4.0-3noble) noble; urgency=high
+
+  * support 3-sided LoadCarriers
+  * make pipeline configurable
+
+ -- ruess <felix.ruess@roboception.de>  Wed, 20 Nov 2024 06:00:00 -0000
+
+ros-kilted-rc-reason-clients (0.3.1-3noble) noble; urgency=high
+
+  * rc_hand_eye_calibration_client: fix getting inital calib
+
+ -- ruess <felix.ruess@roboception.de>  Thu, 15 Jun 2023 05:00:00 -0000
+
+ros-kilted-rc-reason-clients (0.3.0-3noble) noble; urgency=high
+
+  * add rc_cadmatch_client and rc_load_carrier_client
+  * use refactored and updated rc_reason_msgs
+  * replace deprecated set_parameters_callback with add_on_set_parameters_callback
+
+ -- ruess <felix.ruess@roboception.de>  Tue, 08 Feb 2022 06:00:00 -0000
+
+ros-kilted-rc-reason-clients (0.2.1-3noble) noble; urgency=high
+
+  * cmake: detect if it is shallow clone on buildfarm and use version from package.xml
+
+ -- ruess <felix.ruess@roboception.de>  Sat, 16 Jan 2021 06:00:00 -0000
+
+ros-kilted-rc-reason-clients (0.2.0-3noble) noble; urgency=high
+
+  * Added new error values to hand-eye calibration service call
+  * remove builtool_depend on non-existing ament_python
+
+ -- ruess <felix.ruess@roboception.de>  Thu, 14 Jan 2021 06:00:00 -0000
+
+ros-kilted-rc-reason-clients (0.1.0-3noble) noble; urgency=high
+
+  * initial release
+
+ -- ruess <felix.ruess@roboception.de>  Wed, 03 Jun 2020 05:00:00 -0000
+
+
