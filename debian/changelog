@@ -1,0 +1,46 @@
+ros-rolling-rc-reason-msgs (0.5.0-1bookworm) bookworm; urgency=high
+
+  * add overexposed field to SetHandEyeCalibrationPose_Response
+
+ -- Felix Ruess <felix.ruess@roboception.de>  Tue, 29 Jul 2025 22:00:00 -0000
+
+ros-rolling-rc-reason-msgs (0.4.0-1bookworm) bookworm; urgency=high
+
+  * Grasp msg: add priority, gripper_id and collision_checked
+  * LoadCarrier msg: add height_open_side for 3-sided LC
+  * CadMatchDetectObject srv: add pose_prior_ids and data_acquisition_mode
+  * SilhouetteMatchDetectObject srv: add object_plane_detection
+
+ -- Felix Ruess <felix.ruess@roboception.de>  Tue, 19 Nov 2024 23:00:00 -0000
+
+ros-rolling-rc-reason-msgs (0.3.1-1bookworm) bookworm; urgency=high
+
+
+
+ -- Felix Ruess <felix.ruess@roboception.de>  Wed, 14 Jun 2023 22:00:00 -0000
+
+ros-rolling-rc-reason-msgs (0.3.0-1bookworm) bookworm; urgency=high
+
+  * refactor and update for v22.01
+
+ -- Felix Ruess <felix.ruess@roboception.de>  Mon, 07 Feb 2022 23:00:00 -0000
+
+ros-rolling-rc-reason-msgs (0.2.1-1bookworm) bookworm; urgency=high
+
+  * fix package dependencies for ROS buildfarm
+
+ -- Felix Ruess <felix.ruess@roboception.de>  Fri, 15 Jan 2021 23:00:00 -0000
+
+ros-rolling-rc-reason-msgs (0.2.0-1bookworm) bookworm; urgency=high
+
+  * Added new error values to hand-eye calibration service call definition
+
+ -- Felix Ruess <felix.ruess@roboception.de>  Wed, 13 Jan 2021 23:00:00 -0000
+
+ros-rolling-rc-reason-msgs (0.1.0-1bookworm) bookworm; urgency=high
+
+  * initial release
+
+ -- Felix Ruess <felix.ruess@roboception.de>  Tue, 02 Jun 2020 22:00:00 -0000
+
+
