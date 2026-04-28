@@ -1,0 +1,41 @@
+# Description: Triggers detection of an object.
+
+# Required
+string template_id
+
+# Required. Pose frame for output poses (valid values are camera and external)
+string pose_frame
+
+# Optional
+string region_of_interest_id
+
+# Optional
+string load_carrier_id
+
+# Optional
+Compartment load_carrier_compartment
+
+# Required only if reference frame = external and sensor is robot-mounted
+geometry_msgs/Pose robot_pose
+
+# Optional. Enables collision checking of grasps with load carrier
+CollisionDetection collision_detection
+
+# Optional
+string[] pose_prior_ids
+
+# Optional. Whether to capture images or use last ones. Can be 'USE_LAST' or 'CAPTURE_NEW' (default).
+string data_acquisition_mode
+
+---
+
+builtin_interfaces/Time timestamp
+
+# List of detected matches (instances) of the object
+Match[] matches
+
+Grasp[] grasps
+
+LoadCarrier[] load_carriers
+
+rc_common_msgs/ReturnCode return_code
