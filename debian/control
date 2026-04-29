@@ -1,0 +1,12 @@
+Source: ros-lyrical-rc-reason-msgs
+Section: misc
+Priority: optional
+Maintainer: Felix Ruess <felix.ruess@roboception.de>
+Build-Depends: debhelper (>= 9.0.0), ros-lyrical-ament-cmake, ros-lyrical-ament-lint-common <!nocheck>, ros-lyrical-geometry-msgs, ros-lyrical-rc-common-msgs, ros-lyrical-rosidl-default-generators, ros-lyrical-shape-msgs, ros-lyrical-std-msgs, ros-lyrical-ros-workspace, ros-lyrical-rosidl-typesupport-fastrtps-c, ros-lyrical-rosidl-typesupport-fastrtps-cpp
+Homepage: https://index.ros.org/p/rc_reason_msgs/#lyrical
+Standards-Version: 3.9.2
+
+Package: ros-lyrical-rc-reason-msgs
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, ros-lyrical-geometry-msgs, ros-lyrical-rc-common-msgs, ros-lyrical-rosidl-default-runtime, ros-lyrical-shape-msgs, ros-lyrical-std-msgs, ros-lyrical-ros-workspace
+Description: Msg and srv definitions for rc_reason_clients
