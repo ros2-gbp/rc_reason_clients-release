@@ -28,9 +28,11 @@ find_package(rc_common_msgs REQUIRED)
 set(msg_files
   "msg/Box.msg"
   "msg/CellFillingLevel.msg"
+  "msg/ImageEvent.msg"
   "msg/CollisionDetection.msg"
   "msg/Compartment.msg"
   "msg/DetectedTag.msg"
+  "msg/Dimensioning.msg"
   "msg/Grasp.msg"
   "msg/GridSize.msg"
   "msg/Item.msg"
@@ -48,6 +50,7 @@ set(msg_files
   "msg/SilhouetteMatchObject.msg"
   "msg/SuctionGrasp.msg"
   "msg/Tag.msg"
+  "msg/TexturedBox.msg"
 )
 
 set(srv_files
@@ -74,6 +77,7 @@ set(srv_files
   "srv/SetRegionOfInterest2D.srv"
   "srv/SetRegionOfInterest3D.srv"
   "srv/SilhouetteMatchDetectObject.srv"
+  "srv/TriggerDump.srv"
   "srv/WarmupTemplate.srv"
 )
 
