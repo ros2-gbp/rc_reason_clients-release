@@ -1,0 +1,8 @@
+# Description: Sets a 3D region of interest.
+
+# Required
+RegionOfInterest3D region_of_interest
+
+---
+
+rc_common_msgs/ReturnCode return_code
