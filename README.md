@@ -4,8 +4,9 @@ rc_reason_clients for ROS2
 This package provides ROS2 client nodes that interface with Roboception devices like the [rc_visard](https://roboception.com/rc_visard) 3D sensor and [rc_cube](https://roboception.com/rc_cube).
 
 Please consult the manuals for detailed descriptions of parameters and services:
-* https://doc.rc-visard.com
-* https://doc.rc-cube.com
+
+* <https://doc.rc-visard.com>
+* <https://doc.rc-cube.com>
 
 These rc_reason client nodes communicate with the device via REST-API and make the functionality available in a ROS2 native way:
 
@@ -20,14 +21,22 @@ Create a ROS2 workspace, clone the repository and build with `colcon build --sym
 Running
 --------
 
-The parameters and services of each client have the same names as in the REST-API (see [documentation](https://doc.rc-visard.com)).
+The parameters and services of each client have the same names as in the REST-API (see [documentation](https://doc.rc-cube.com)).
+Reason client nodes automatically provide the `trigger_dump` service if supported by the device and module. Note that certain hardware may require a mounted USB device to save the dump.
 
-Additionally every client has a `host` parameter which needs to be set to the IP address or hostname of the device (i.e. rc_cube or rc_visard) and a `pipeline` parameter which defaults to 0:
+Additionally every client has a `host` parameter which needs to be set to the IP address or hostname of the device (i.e. rc_cube or rc_visard) and a `pipeline` parameter which defaults to 0.
+The port of the REST-API can be set via the `rest_port` parameter (default: 80).
 
 Example to run the april tag detection client for pipeline 1:
 
-```
+```bash
 ros2 run rc_reason_clients rc_april_tag_detect_client --ros-args --param host:=10.0.2.40 --param pipeline:=1
+```
+
+Example to connect to a REST-API on a non-default port:
+
+```bash
+ros2 run rc_reason_clients rc_april_tag_detect_client --ros-args --param host:=10.0.2.40 --param rest_port:=8080
 ```
 
 rc_april_tag_detect_client and rc_qr_code_detect_client
@@ -58,9 +67,9 @@ rc_silhouettematch_client
 -------------------------
 
 Client to interface with SilhouetteMatch running on the device.
-See the [SilhouetteMatch documentation](https://doc.rc-visard.com/latest/en/silhouettematch.html) for details.
+See the [SilhouetteMatch documentation](https://doc.rc-cube.com/latest/en/silhouettematch.html) for details.
 
-[SilhouetteMatch parameters](https://doc.rc-visard.com/latest/en/silhouettematch.html#parameters)
+[SilhouetteMatch parameters](https://doc.rc-cube.com/latest/en/silhouettematch.html#parameters)
 
 The client has a additional parameters to enable publishing of detected instances on `/tf` or the base plane as marker.
 The child_frame_id is set to `<templateId>_<instanceId>`.
@@ -68,7 +77,7 @@ The child_frame_id is set to `<templateId>_<instanceId>`.
 * `publish_tf`: Publish detected instances on tf (default: True)
 * `publish_markers`: Publish base plane as visualization marker (default: True)
 
-[SilhouetteMatch Services](https://doc.rc-visard.com/latest/en/silhouettematch.html#services)
+[SilhouetteMatch Services](https://doc.rc-cube.com/latest/en/silhouettematch.html#services)
 
 To run the client:
 `ros2 run rc_reason_clients rc_silhouettematch_client --ros-args --param host:=10.0.2.40`
@@ -77,16 +86,16 @@ rc_itempick_client
 ------------------
 
 Client to interface with ItemPick running on the device.
-See the [ItemPick documentation](https://doc.rc-visard.com/latest/en/itempick.html) for details.
+See the [ItemPick documentation](https://doc.rc-cube.com/latest/en/itempick.html) for details.
 
-[ItemPick parameters](https://doc.rc-visard.com/latest/en/itempick.html#parameters)
+[ItemPick parameters](https://doc.rc-cube.com/latest/en/itempick.html#parameters)
 
 The client has an additional parameters to enable publishing of detected load carriers and grasps on `/tf` or as markers:
 
 * `publish_tf`: Publish detected instances on tf (default: True)
 * `publish_markers`: Publish detected instances as visualization markers (default: True)
 
-[ItemPick services](https://doc.rc-visard.com/latest/en/itempick.html#services)
+[ItemPick services](https://doc.rc-cube.com/latest/en/itempick.html#services)
 
 To run the client:
 `ros2 run rc_reason_clients rc_itempick_client --ros-args --param host:=10.0.2.40`
@@ -95,16 +104,16 @@ rc_boxpick_client
 -----------------
 
 Client to interface with BoxPick running on the device.
-See the [BoxPick documentation](https://doc.rc-visard.com/latest/en/itempick.html) for details.
+See the [BoxPick documentation](https://doc.rc-cube.com/latest/en/itempick.html) for details.
 
-[BoxPick parameters](https://doc.rc-visard.com/latest/en/itempick.html#parameters)
+[BoxPick parameters](https://doc.rc-cube.com/latest/en/itempick.html#parameters)
 
 The client has an additional parameters to enable publishing of detected load carriers, grasps and items on `/tf` or as markers:
 
 * `publish_tf`: Publish detected instances on tf (default: True)
 * `publish_markers`: Publish detected instances as visualization markers (default: True)
 
-[BoxPick services](https://doc.rc-visard.com/latest/en/itempick.html#services)
+[BoxPick services](https://doc.rc-cube.com/latest/en/itempick.html#services)
 
 To run the client:
 `ros2 run rc_reason_clients rc_boxpick_client --ros-args --param host:=10.0.2.40`
@@ -169,3 +178,36 @@ The client has an additional parameters to enable publishing of detected load ca
 
 To run the client:
 `ros2 run rc_reason_clients rc_cadmatch_client --ros-args --param host:=10.0.2.40`
+
+rc_image_event_client
+---------------------
+
+Client to interface with the image events via gRPC.
+Publishes a `rc_reason_msgs/ImageEvent` message when a specific event (e.g. depth acquisition finished) is received.
+
+Topic: `~/depth_acquisition_done`
+
+Parameters:
+
+* `host`: Device IP address (mandatory)
+* `pipeline`: Pipeline index (default: 0). The gRPC port is automatically determined as `50051 + pipeline`.
+* `port`: gRPC port (default: 50051 + pipeline)
+* `depth_acquisition_done_enabled`: Enable/disable depth acquisition events (default: True)
+* `reconnect_interval`: Interval in seconds to attempt reconnection on gRPC failure (default: 2.0)
+
+Example:
+`ros2 run rc_reason_clients rc_image_event_client --ros-args -p host:=10.0.1.108 -p pipeline:=2`
+
+
+
+Known Issues
+**Ubuntu 22.04 (ROS 2 Humble):**
+
+The system package `python3-grpcio` (v1.30.2) on Ubuntu 22.04 has a [known bug](https://bugs.launchpad.net/ubuntu/+source/grpc/+bug/1971114) causing the client to hang with 100% CPU load at "Starting ImageEventClient connecting to...".
+
+**Workaround:** Install `grpcio` and `grpcio-tools` via `pip` instead of using the system package:
+
+```bash
+sudo apt remove python3-grpcio python3-grpc-tools
+pip3 install grpcio grpcio-tools protobuf
+```

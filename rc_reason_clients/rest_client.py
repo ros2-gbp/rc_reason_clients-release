@@ -91,13 +91,20 @@ class RestClient(Node):
         self.declare_parameter('pipeline', 0, ParameterDescriptor(type=ParameterType.PARAMETER_INTEGER, read_only=True))
         self.pipeline = self.get_parameter('pipeline').value
 
-        self.api_node_prefix = f"http://{self.host}/api/v2/pipelines/{self.pipeline}/nodes/{self.rest_name}"
+        self.declare_parameter('rest_port', 80,
+                               ParameterDescriptor(type=ParameterType.PARAMETER_INTEGER, read_only=True,
+                                                   description='Port of the REST-API on the device',
+                                                   integer_range=[IntegerRange(from_value=1, to_value=65535)]))
+        self.rest_port = self.get_parameter('rest_port').value
+
+        self.api_node_prefix = f"http://{self.host}:{self.rest_port}/api/v2/pipelines/{self.pipeline}/nodes/{self.rest_name}"
 
         self.rest_param_names = None
         self.declare_rest_parameters()
         self.add_on_set_parameters_callback(self.params_callback)
 
         self.rest_services = []
+        self._add_optional_services()
 
     def declare_rest_parameters(self):
         rest_params = [p for p in self._get_rest_parameters() if p['name'] not in self.ignored_parameters]
@@ -173,3 +180,22 @@ class RestClient(Node):
         """create a service and inject the REST-API service name"""
         srv = self.create_service(srv_type, f"{self.get_name()}/{srv_name}", partial(callback, srv_name))
         self.rest_services.append(srv)
+
+    def rest_service_available(self, srv_name):
+        """check whether the device/module offers the given REST service"""
+        try:
+            url = f"{self.api_node_prefix}/services/{srv_name}"
+            res = requests_retry_session().get(url)
+            return res.status_code == 200
+        except Exception as e:
+            self.get_logger().error(f"Error checking for service {srv_name}: {e}")
+            return False
+
+    def trigger_dump_cb(self, srv_name, request, response):
+        self.call_rest_service(srv_name, request, response)
+        return response
+
+    def _add_optional_services(self):
+        if self.rest_service_available('trigger_dump'):
+            from rc_reason_msgs.srv import TriggerDump
+            self.add_rest_service(TriggerDump, 'trigger_dump', self.trigger_dump_cb)
